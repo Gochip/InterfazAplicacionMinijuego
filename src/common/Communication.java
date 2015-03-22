@@ -1,6 +1,6 @@
 package common;
 
-import java.io.Serializable;
+import com.difusion.Diffusion;
 
 /**
  *
@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public interface Communication {
     public void sendToAll(String message);
-    public void sendObjectToAll(Serializable object);
+    public void sendObjectToAll(Diffusion object);
     public void sendToPlayer(String message, Player player);
-    public void sendObjectToPlayer(Serializable object, Player player);
+    public void sendObjectToPlayer(Diffusion object, Player player);
 }

@@ -1,6 +1,6 @@
 package controller;
 
-import common.Communication;
+import common.ActionCommunication;
 import common.Group;
 import common.Player;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public interface ApplicationController {
     public ArrayList<Player> getPlayers();
     public Group getGroup();
-    public Communication getCommunication();
+    public ActionCommunication getCommunication();
     public void startMiniGame();
     public void finishMiniGame();
     
