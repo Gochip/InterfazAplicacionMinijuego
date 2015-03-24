@@ -12,18 +12,30 @@ import java.util.ArrayList;
 public class SimpleApplicationController implements ApplicationController{
 
     private SimpleActionCommunication com;
+    private ArrayList<Player> players;
+    private Group group;
+    private Player player;
     public SimpleApplicationController(SimpleActionCommunication com){
         this.com = com;
+        this.players = new ArrayList<>();
+    }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
+    }
+    
+    public void setGroup(Group group){
+        this.group = group;
     }
     
     @Override
     public ArrayList<Player> getPlayers() {
-        return null;
+        return this.players;
     }
 
     @Override
     public Group getGroup() {
-        return null;
+        return this.group;
     }
 
     @Override
@@ -40,5 +52,23 @@ public class SimpleApplicationController implements ApplicationController{
     public void finishMiniGame() {
         
     }
+
+    @Override
+    public Player getCurrentPlayer() {
+        return this.player;
+    }
     
+    public void setCurrentPlayer(Player player){
+        this.player = player;
+    }
+
+    @Override
+    public Player getPlayerById(String id) {
+        for(Player p : players){
+            if(p.getId().equals(id)){
+                return p;
+            }
+        }
+        return null;
+    }
 }

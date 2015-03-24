@@ -22,6 +22,10 @@ public class SimpleActionCommunication implements ActionCommunication{
         this.idGroup = idGroup;
     }
     
+    public Client getClient(){
+        return this.cl;
+    }
+    
     @Override
     public void sendActionToAll(Action action) {
         sendToAll(action.toString());
