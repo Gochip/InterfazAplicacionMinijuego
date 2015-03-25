@@ -4,6 +4,7 @@ import common.ActionCommunication;
 import common.Group;
 import common.Player;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -69,6 +70,11 @@ public class SimpleApplicationController implements ApplicationController{
                 return p;
             }
         }
+        return null;
+    }
+
+    @Override
+    public JFrame getGameWindow() {
         return null;
     }
 }

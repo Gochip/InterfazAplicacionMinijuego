@@ -5,6 +5,7 @@ import common.ActionCommunication;
 import common.Group;
 import common.Player;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,5 +20,6 @@ public interface ApplicationController {
     public ActionCommunication getCommunication();
     public void startMiniGame();
     public void finishMiniGame();
+    public JFrame getGameWindow();
     
 }
