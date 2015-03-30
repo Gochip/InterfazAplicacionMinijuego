@@ -1,6 +1,7 @@
 package controller;
 
 import common.ActionCommunication;
+import common.GameOptions;
 import common.Group;
 import common.Player;
 import java.util.ArrayList;
@@ -17,10 +18,12 @@ public class SimpleApplicationController implements ApplicationController {
     private Group group;
     private Player player;
     private JFrame gameWindows;
+    private GameOptions gameOptions;
 
     public SimpleApplicationController(SimpleActionCommunication com) {
         this.com = com;
         this.players = new ArrayList<>();
+        this.gameOptions = new GameOptions();
     }
 
     public void addPlayer(Player player) {
@@ -82,5 +85,14 @@ public class SimpleApplicationController implements ApplicationController {
     @Override
     public JFrame getGameWindow() {
         return this.gameWindows;
+    }
+
+    public void setGameOptions(GameOptions gameOptions) {
+        this.gameOptions = gameOptions;
+    }
+
+    @Override
+    public GameOptions getGameOptions() {
+        return this.gameOptions;
     }
 }

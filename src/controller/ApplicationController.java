@@ -2,6 +2,7 @@ package controller;
 
 import com.client.Client;
 import common.ActionCommunication;
+import common.GameOptions;
 import common.Group;
 import common.Player;
 import java.util.ArrayList;
@@ -21,5 +22,6 @@ public interface ApplicationController {
     public void startMiniGame();
     public void finishMiniGame();
     public JFrame getGameWindow();
+    public GameOptions getGameOptions();
     
 }
