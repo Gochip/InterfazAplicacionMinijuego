@@ -23,9 +23,9 @@ public class SimpleSynchronizer extends Synchronizer {
     private final Client cl;
     private static String GAME_DATA = "GAME_DATA";
     private static String JOINING = "JOINING";
-    private SimpleExecute simpleExecute;
+    private AbstractSyncExecutor simpleExecute;
 
-    public SimpleSynchronizer(SimpleApplicationController controller, SimpleExecute simpleExecute) {
+    public SimpleSynchronizer(SimpleApplicationController controller, AbstractSyncExecutor simpleExecute) {
         this.controller = controller;
         this.com = this.controller.getCommunication();
         this.cl = this.com.getClient();
@@ -35,14 +35,20 @@ public class SimpleSynchronizer extends Synchronizer {
     @Override
     public void sendToken() {
         String name = this.controller.getCurrentPlayer().getName();
+        this.controller.addPlayer(this.controller.getCurrentPlayer());
         Action action = new Action(JOINING);
         action.addValue("name", name);
         com.sendActionToAll(action);
+        if (isCorrectState()) {
+            execute();
+        }
     }
 
     @Override
     public boolean isCorrectState() {
-        return controller.getPlayers().size() == 4;
+        int n = 4;
+        //System.out.println("Cantidad de players: " + controller.getPlayers().size());
+        return controller.getPlayers().size() == n;
     }
 
     @Override
@@ -57,7 +63,6 @@ public class SimpleSynchronizer extends Synchronizer {
 
     @Override
     public void receiveToken() {
-        System.out.println("Received Token");
         cl.addEventListener(new MessageListener() {
 
             @Override
